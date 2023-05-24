@@ -23,7 +23,11 @@ public class OptimismMain {
 
         LOGGER.info("Optimism Latest TX");
         List<EthBlock.TransactionResult> txs =
-                web3.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, true).send().getBlock().getTransactions();
+                web3.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, true)
+                        .send()
+                        .getBlock()
+                        .getTransactions();
+        
         txs.forEach(tx -> {
             EthBlock.TransactionObject transaction = (EthBlock.TransactionObject) tx.get();
             LOGGER.info("TX: " + transaction.getHash());
